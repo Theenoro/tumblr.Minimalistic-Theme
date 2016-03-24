@@ -4,7 +4,9 @@
         {block:Description}
             <meta name="description" content="{MetaDescription}" />
         {/block:Description}
-
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <style type="text/css">
           @import url(https://fonts.googleapis.com/css?family=Exo);
@@ -95,6 +97,11 @@
             order:1;
             width:64px;
           }
+          .app-posts .photo{
+              margin-left:auto;
+              margin-right:auto;
+              width:500px;
+          }
           .app-posts .text{
             order:2;
             width:100%;
@@ -155,11 +162,11 @@
             <div class="app-blog">
                 <div class="app-user">
                     <div class="card">
-                        <img class="avatar" src="http://broarts.eu/img/5Mymvqf1.jpg"/>
+                        <img class="avatar" src="{PortraitURL-128}"/>
                         <h2 class="title">{Title}</h2>
                         {block:Description}
                           <p id="description">{Description}</p>
-                        {/block:Description}
+                        {/block:Description} 
                         <hr/>
                         Info:<br/>
                         Webdeveloper
@@ -205,7 +212,8 @@
                                 {Body}
                             {/block:Text}
                             {block:Photo}
-                                <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+                                <div class="photp">
+                                <img src="{PhotoURL-500}" alt="{PhotoAlt}"/></div>
                                 {block:Caption}
                                     <div class="caption">{Caption}</div>
                                 {/block:Caption}
@@ -264,9 +272,11 @@
                                 {/block:Caption}
                             {/block:Audio}
                             {block:Answer}
-                                {AskerPortraitURL-96} {Asker}:{Question}
+                                <div class="question">
+                                    <img src="{AskerPortraitURL-30}"/>{Asker}:{Question}
+                                </div>
                                 {block:Answerer}
-                                    {AnswererPortraitURL-96} {Answerer}:{Answer}
+                                    <img src="{AnswererPortraitURL-30}"/>{Answerer}:{Answer}
                                 {/block:Answerer}
                                 <div class="replies">
                                     {Replies}
@@ -282,7 +292,7 @@
                                 {block:HasTags}
                                     <!-- TAGS -->
                                     {block:Tags} 
-                                        <a href="{TagURLChrono}">{Tag}</a>
+                                        <a href="{TagURLChrono}"><i class="fa fa-hashtag"></i>{Tag}</a> 
                                     {/block:Tags}
                                     <!-- ENDTAGS -->
                                 {/block:HasTags}
@@ -293,15 +303,17 @@
                 </div>
             </div>
             <div class="card">
-              <p id="footer">
-                  {block:PreviousPage}
-                     <a href="{PreviousPage}">&#171; Previous</a>
-                  {/block:PreviousPage}{block:NextPage}
-                     <a href="{NextPage}">Next &#187;</a>
-                  {/block:NextPage}
-                  <a href="/archive">Archive</a>
-                </p>
-                {CopyrightYears} - Theme by <a href="http://theenoro.tumblr.com">Theenoro</a> 
+              <div id="footer">
+                 {block:Pagination}
+                      {block:PreviousPage}
+                         <a href="{PreviousPage}">&#171; Previous</a>
+                      {/block:PreviousPage}{block:NextPage}
+                         <a href="{NextPage}">Next &#187;</a>
+                      {/block:NextPage}
+                 {/block:Pagination}
+                 <a href="/archive">Archive</a>
+                </div>
+                {CopyrightYears} - Theme by <a href="http://theenoro.tumblr.com">Theenoro</a> edited by [YOUR NAME]
             </div>
         </div>
     </body>
